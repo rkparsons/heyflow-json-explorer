@@ -1,0 +1,11 @@
+@use '@/styles/size';
+@use '@/styles/color';
+
+.root {
+    margin-top: 1rem;
+    padding: size.$spacing-medium;
+    background-color: color.$background;
+    border: 1px solid color.$lines;
+    border-radius: size.$border-radius-medium;
+    overflow: hidden;
+}

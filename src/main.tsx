@@ -19,6 +19,15 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                         hasError: false,
                     },
                 ],
+                child: {
+                    a: 'test',
+                    b: 'another',
+                    c: 'more',
+                    anotherArray: [
+                        { x: true, y: false, z: null },
+                        { x: false, y: true, z: true },
+                    ],
+                },
             }}
         />
     </React.StrictMode>
