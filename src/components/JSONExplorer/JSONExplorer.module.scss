@@ -1,0 +1,31 @@
+@use '@/styles/color';
+@use '@/styles/size';
+
+.fields {
+    padding: 0;
+    border: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: size.$spacing-small;
+
+    label {
+        margin: size.$spacing-small 0;
+    }
+}
+
+.textBox {
+    padding: size.$spacing-medium;
+    background-color: color.$background;
+    border-radius: size.$border-radius-medium;
+    border: 1px solid color.$lines;
+    width: 100%;
+    text-overflow: ellipsis;
+
+    &:focus {
+        outline: color.$text-primary solid 2px;
+    }
+
+    &:disabled {
+        border: none;
+    }
+}
