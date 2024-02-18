@@ -29,7 +29,7 @@ export class RenderService {
     renderProperty(path: string, jsonObjectKey: string, jsonObjectValue: Json) {
         return (
             <div key={jsonObjectKey} className={path === this.basePath ? '' : this.styles.indent}>
-                <button className={this.styles.keyButton} onClick={() => this.onKeyClick(path.concat(`.${jsonObjectKey}`))} tabIndex={-1}>
+                <button className={this.styles.keyButton} onClick={() => this.onKeyClick(path.concat(`.${jsonObjectKey}`))}>
                     {jsonObjectKey}
                 </button>
                 : {this.render(path.concat(`.${jsonObjectKey}`), jsonObjectValue)}

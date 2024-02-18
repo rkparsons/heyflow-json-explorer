@@ -60,7 +60,8 @@
             cursor: default;
         }
 
-        &:hover {
+        &:hover,
+        &:focus {
             background-color: color.$action-primary;
             opacity: 1;
         }
@@ -83,7 +84,8 @@
     padding: 0;
     color: color.$link;
 
-    &:hover {
+    &:hover,
+    &:focus {
         text-decoration: underline;
     }
 

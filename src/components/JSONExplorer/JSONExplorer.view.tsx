@@ -39,13 +39,7 @@ export const JSONExplorer: FC<ViewProps> = ({ basePath, initialValue }) => {
             <fieldset className={styles.fields}>
                 <label>
                     <div>Property</div>
-                    <input
-                        type="text"
-                        className={styles.textBox}
-                        value={propertyPath}
-                        onChange={onPropertyChange}
-                        placeholder="Property"
-                    />
+                    <input type="text" className={styles.textBox} value={propertyPath} onChange={onPropertyChange} placeholder="Property" />
                 </label>
                 <label>
                     <div>Type</div>
@@ -77,7 +71,7 @@ export const JSONExplorer: FC<ViewProps> = ({ basePath, initialValue }) => {
                             placeholder="Value"
                             disabled={propertyValue === undefined}
                         />
-                        <button onClick={onJsonChange} disabled={propertyValue === undefined}>
+                        <button name="update" onClick={onJsonChange} disabled={propertyValue === undefined}>
                             Update
                         </button>
                     </span>
