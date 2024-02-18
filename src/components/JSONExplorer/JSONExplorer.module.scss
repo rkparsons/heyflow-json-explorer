@@ -29,3 +29,22 @@
         border: none;
     }
 }
+
+.indent {
+    margin-left: size.$spacing-medium;
+}
+
+.keyButton {
+    padding: 0;
+    color: color.$link;
+
+    &:hover {
+        text-decoration: underline;
+    }
+
+    &:disabled {
+        color: color.$text-primary;
+        text-decoration: none;
+        cursor: default;
+    }
+}

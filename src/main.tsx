@@ -8,6 +8,7 @@ import ReactDOM from 'react-dom/client';
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
         <JSONExplorer
+            basePath="res"
             json={{
                 date: '2021-10-27T07:49:14.896Z',
                 hasError: false,

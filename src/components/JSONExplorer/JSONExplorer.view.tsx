@@ -6,13 +6,14 @@ import { SoftPanel } from '@/components/SoftPanel';
 import styles from './JSONExplorer.module.scss';
 
 type ViewProps = {
+    basePath: string;
     json: Json;
 };
 
-export const JSONExplorer: FC<ViewProps> = ({ json }) => {
-    const [propertyPath, setPropertyPath] = useState<string>('res');
+export const JSONExplorer: FC<ViewProps> = ({ basePath, json }) => {
+    const [propertyPath, setPropertyPath] = useState<string>(basePath);
     const [propertyValue, setPropertyValue] = useState<Json>();
-    const renderService = new RenderService();
+    const renderService = new RenderService(basePath, styles, setPropertyPath);
 
     function onPropertyChange(e: ChangeEvent<HTMLInputElement>) {
         setPropertyPath(e.target.value);
@@ -56,10 +57,9 @@ export const JSONExplorer: FC<ViewProps> = ({ json }) => {
                             ? propertyValue
                             : JSON.stringify(propertyValue)}
                 </div>
-                <br />
             </fieldset>
 
-            <SoftPanel>{renderService.render(json)}</SoftPanel>
+            <SoftPanel>{renderService.render(basePath, json)}</SoftPanel>
         </>
     );
 };
