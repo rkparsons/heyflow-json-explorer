@@ -1,3 +1,4 @@
+@use '@/styles/breakpoint';
 @use '@/styles/color';
 @use '@/styles/size';
 
@@ -5,8 +6,12 @@
     padding: 0;
     border: none;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: size.$spacing-small;
+
+    @media (min-width: breakpoint.$desktop) {
+        grid-template-columns: 1fr 1fr;
+    }
 
     label {
         margin: size.$spacing-small 0;
@@ -14,7 +19,7 @@
 }
 
 .textBox {
-    padding: size.$spacing-medium;
+    padding: size.$spacing-small;
     background-color: color.$background;
     border-radius: size.$border-radius-medium;
     border: 1px solid color.$lines;
@@ -27,6 +32,10 @@
 
     &:disabled {
         border: none;
+    }
+
+    @media (min-width: breakpoint.$desktop) {
+        padding: size.$spacing-medium;
     }
 }
 
