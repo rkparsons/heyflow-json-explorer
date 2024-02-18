@@ -7,16 +7,27 @@ import styles from './JSONExplorer.module.scss';
 
 type ViewProps = {
     basePath: string;
-    json: Json;
+    initialValue: Json;
 };
 
-export const JSONExplorer: FC<ViewProps> = ({ basePath, json }) => {
+export const JSONExplorer: FC<ViewProps> = ({ basePath, initialValue }) => {
+    const [json, setJson] = useState(initialValue);
     const [propertyPath, setPropertyPath] = useState<string>(basePath);
     const [propertyValue, setPropertyValue] = useState<Json>();
     const renderService = new RenderService(basePath, styles, setPropertyPath);
 
     function onPropertyChange(e: ChangeEvent<HTMLInputElement>) {
         setPropertyPath(e.target.value);
+    }
+
+    function onValueChange(e: ChangeEvent<HTMLInputElement>) {
+        setPropertyValue(e.target.value);
+    }
+
+    function onJsonChange() {
+        if (propertyValue) {
+            setJson(ObjectService.getCloneWithUpdatedProperty(json, propertyPath, propertyValue));
+        }
     }
 
     useEffect(() => {
@@ -30,12 +41,10 @@ export const JSONExplorer: FC<ViewProps> = ({ basePath, json }) => {
                     <div>Property</div>
                     <input
                         type="text"
-                        name="Property"
                         className={styles.textBox}
                         value={propertyPath}
                         onChange={onPropertyChange}
                         placeholder="Property"
-                        tabIndex={1}
                     />
                 </label>
                 <label>
@@ -48,15 +57,31 @@ export const JSONExplorer: FC<ViewProps> = ({ basePath, json }) => {
                         disabled
                     />
                 </label>
-                <div>
-                    {propertyValue === null
-                        ? 'null'
-                        : propertyValue === undefined
-                          ? 'undefined'
-                          : typeof propertyValue === 'string'
-                            ? propertyValue
-                            : JSON.stringify(propertyValue)}
-                </div>
+                <label className={styles.fullWidth}>
+                    <div>Value</div>
+                    <span className={styles.textBoxControls}>
+                        <input
+                            type="text"
+                            name="Value"
+                            className={styles.textBox}
+                            value={
+                                propertyValue === null
+                                    ? 'null'
+                                    : propertyValue === undefined
+                                      ? 'undefined'
+                                      : typeof propertyValue === 'string'
+                                        ? propertyValue
+                                        : JSON.stringify(propertyValue)
+                            }
+                            onChange={onValueChange}
+                            placeholder="Value"
+                            disabled={propertyValue === undefined}
+                        />
+                        <button onClick={onJsonChange} disabled={propertyValue === undefined}>
+                            Update
+                        </button>
+                    </span>
+                </label>
             </fieldset>
 
             <SoftPanel>{renderService.render(basePath, json)}</SoftPanel>

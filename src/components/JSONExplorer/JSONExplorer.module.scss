@@ -39,6 +39,42 @@
     }
 }
 
+.textBoxControls {
+    display: grid;
+    gap: size.$spacing-medium;
+    grid-template-columns: 1fr;
+
+    @media (min-width: breakpoint.$desktop) {
+        grid-template-columns: auto 200px;
+    }
+
+    button {
+        border: 1px solid;
+        border-radius: size.$border-radius-medium;
+        height: 50px;
+        transition: background-color 300ms;
+
+        &:disabled {
+            opacity: 0.4;
+            background-color: color.$background;
+            cursor: default;
+        }
+
+        &:hover {
+            background-color: color.$action-primary;
+            opacity: 1;
+        }
+
+        @media (min-width: breakpoint.$desktop) {
+            height: 100%;
+        }
+    }
+}
+
+.fullWidth {
+    grid-column: 1 / -1;
+}
+
 .indent {
     margin-left: size.$spacing-medium;
 }
