@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, useEffect, useState } from 'react';
+import { ChangeEvent, FC, useEffect, useMemo, useState } from 'react';
 
 import { ObjectService } from '@/services/objectService';
 import { RenderService } from '@/services/renderService';
@@ -14,7 +14,7 @@ export const JSONExplorer: FC<ViewProps> = ({ basePath, initialValue }) => {
     const [json, setJson] = useState(initialValue);
     const [propertyPath, setPropertyPath] = useState<string>(basePath);
     const [propertyValue, setPropertyValue] = useState<Json>();
-    const renderService = new RenderService(basePath, styles, setPropertyPath);
+    const renderService = useMemo(() => new RenderService(basePath, styles, setPropertyPath), [basePath, setPropertyPath]);
 
     function onPropertyChange(e: ChangeEvent<HTMLInputElement>) {
         setPropertyPath(e.target.value);
