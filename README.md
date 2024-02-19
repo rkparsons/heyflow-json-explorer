@@ -4,6 +4,7 @@
 
 ```sh
 $ git clone https://github.com/rkparsons/heyflow-json-explorer.git
+$ cd heyflow-json-explorer
 ```
 
 #### Install deps:
@@ -12,14 +13,14 @@ $ git clone https://github.com/rkparsons/heyflow-json-explorer.git
 $ npm i
 ```
 
-#### Serve app:
-
-```sh
-$ npm run dev
-```
-
 #### Run tests:
 
 ```sh
 $ npm run test
+```
+
+#### Serve app:
+
+```sh
+$ npm run dev
 ```
